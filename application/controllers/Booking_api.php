@@ -35,7 +35,9 @@ class Booking_api extends CI_Controller {
 				$form_data = array(
 					'first_name'		=>	$this->input->post('first_name'),
 					'last_name'			=>	$this->input->post('last_name'),
-					'id'				=>	$this->input->post('user_id')
+					'id'				=>	$this->input->post('user_id'),
+					'date_slot'			=>	$this->input->post('date_slot'),
+					'time_slot'			=>	$this->input->post('time_slot'),
 				);
 
 				$client = curl_init($api_url);

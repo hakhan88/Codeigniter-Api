@@ -61,7 +61,9 @@ class Api extends CI_Controller {
 		if ($this->form_validation->run()) {
 			$data = array(
 				'first_name'		=>	$this->input->post('first_name'),
-				'last_name'			=>	$this->input->post('last_name')
+				'last_name'			=>	$this->input->post('last_name'),
+				'date_slot'			=>	$this->input->post('date_slot'),
+				'time_slot'			=>	$this->input->post('time_slot'),
 			);
 			$this->api_model->update_api($this->input->post('id'), $data);
 			$array = array(
