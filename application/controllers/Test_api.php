@@ -11,6 +11,7 @@ class Test_api extends CI_Controller {
 		if ($this->input->post('data_action')) {
 			$data_action = $this->input->post('data_action');
 
+			// delete the record after user confirmation
 			if ($data_action == "Delete") {
 				$api_url = "http://localhost/codeigniter-api/api/delete";
 
@@ -27,6 +28,7 @@ class Test_api extends CI_Controller {
 				echo $response;
 			}
 
+			// edit the one that we are using for fetch_single
 			if ($data_action == "Edit") {
 				$api_url = "http://localhost/codeigniter-api/api/update";
 
@@ -45,6 +47,7 @@ class Test_api extends CI_Controller {
 				echo $response;
 			}
 
+			// fetch single (for the record we are editing)
 			if ($data_action == "fetch_single") {
 				$api_url = "http://localhost/codeigniter-api/api/fetch_single";
 
@@ -60,7 +63,8 @@ class Test_api extends CI_Controller {
 				curl_close($client);
 				echo $response;
 			}
-
+			
+			// Insert new record
 			if ($data_action == "Insert") {
 				$api_url = "http://localhost/codeigniter-api/api/insert";
 			
@@ -78,6 +82,7 @@ class Test_api extends CI_Controller {
 				echo $response;
 			}
 
+			// fetch all data
 			if ($data_action == "fetch_all") {
 				$api_url = "http://localhost/codeigniter-api/api";
 
