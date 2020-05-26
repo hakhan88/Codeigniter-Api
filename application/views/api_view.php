@@ -71,13 +71,12 @@
 
                     <label>Please select the date:</label>
                     <br />
-                    <input type="text" name="date_slot" id="datepicker">
+                    <input type="text" name="date_slot" id="datepicker" class="form-control" />
                     <br />
-
 
                     <label>Please select the time slot:</label>
                     <br />
-                    <select name="time_slot" id="time_slot">
+                    <select name="time_slot" id="time_slot" class="form-control">
                         <option value="9:00 - 9:30">9:00 - 9:30</option>
                         <option value="9:30 - 10:00">9:30 - 10:00</option>
                         <option value="10:00 - 10:30">10:00 - 10:30</option>
@@ -98,6 +97,7 @@
                         <option value="17:30 - 18:00">17:30 - 18:00</option>
                     </select>
                     <br />
+
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="user_id" id="user_id" />
