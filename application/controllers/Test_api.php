@@ -8,10 +8,10 @@ class Test_api extends CI_Controller {
 	}
 
 	function action() {
-		if($this->input->post('data_action')) {
+		if ($this->input->post('data_action')) {
 			$data_action = $this->input->post('data_action');
 
-			if($data_action == "Delete") {
+			if ($data_action == "Delete") {
 				$api_url = "http://localhost/codeigniter-api/api/delete";
 
 				$form_data = array(
@@ -27,7 +27,7 @@ class Test_api extends CI_Controller {
 				echo $response;
 			}
 
-			if($data_action == "Edit") {
+			if ($data_action == "Edit") {
 				$api_url = "http://localhost/codeigniter-api/api/update";
 
 				$form_data = array(
@@ -45,7 +45,7 @@ class Test_api extends CI_Controller {
 				echo $response;
 			}
 
-			if($data_action == "fetch_single") {
+			if ($data_action == "fetch_single") {
 				$api_url = "http://localhost/codeigniter-api/api/fetch_single";
 
 				$form_data = array(
@@ -61,7 +61,7 @@ class Test_api extends CI_Controller {
 				echo $response;
 			}
 
-			if($data_action == "Insert") {
+			if ($data_action == "Insert") {
 				$api_url = "http://localhost/codeigniter-api/api/insert";
 			
 				$form_data = array(
@@ -78,7 +78,7 @@ class Test_api extends CI_Controller {
 				echo $response;
 			}
 
-			if($data_action == "fetch_all") {
+			if ($data_action == "fetch_all") {
 				$api_url = "http://localhost/codeigniter-api/api";
 
 				$client = curl_init($api_url);
@@ -87,7 +87,7 @@ class Test_api extends CI_Controller {
 				curl_close($client);
 				$result = json_decode($response);
 				$output = '';
-				if(count($result) > 0) {
+				if (count($result) > 0) {
 					foreach($result as $row) {
 						$output .= '
 						<tr>
@@ -110,7 +110,6 @@ class Test_api extends CI_Controller {
 			}
 		}
 	}
-	
 }
 
 ?>
