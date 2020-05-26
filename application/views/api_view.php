@@ -98,6 +98,9 @@
                     </select>
                     <br />
 
+                    <span id="time_slot_taken" class="text-danger"></span>
+                    <br />
+
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="user_id" id="user_id" />
@@ -167,6 +170,7 @@
                     if (data.error) {
                         $('#first_name_error').html(data.first_name_error);
                         $('#last_name_error').html(data.last_name_error);
+                        $('#time_slot_taken').html(data.time_slot_taken);
                     }
                 }
             })

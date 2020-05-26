@@ -20,17 +20,27 @@ class Api extends CI_Controller {
 		$this->form_validation->set_rules('date_slot', 'Date', 'required');
 		$this->form_validation->set_rules('time_slot', 'Time', 'required');
 		if ($this->form_validation->run()) {
-			$data = array(
-				'first_name'	=>	$this->input->post('first_name'),
-				'last_name'		=>	$this->input->post('last_name'),
-				'date_slot'		=>	$this->input->post('date_slot'),
-				'time_slot'		=>	$this->input->post('time_slot'),
-			);
+			$availability = $this->api_model->check_availability($this->input->post('date_slot'), $this->input->post('time_slot'));
 
-			$this->api_model->insert_api($data);
-			$array = array(
-				'success'		=>	true
-			);
+			if (count($availability) <= 2) {
+				$data = array(
+					'first_name'	=>	$this->input->post('first_name'),
+					'last_name'		=>	$this->input->post('last_name'),
+					'date_slot'		=>	$this->input->post('date_slot'),
+					'time_slot'		=>	$this->input->post('time_slot'),
+				);
+	
+				$this->api_model->insert_api($data);
+				$array = array(
+					'success'		=>	true
+				);
+			} else {
+				$array = array(
+					'error'					=>	true,
+					'time_slot_taken'		=>	'Time slot is taken, please choose another time',
+				);
+			}
+
 		} else {
 			$array = array(
 				'error'					=>	true,
@@ -59,16 +69,25 @@ class Api extends CI_Controller {
 		$this->form_validation->set_rules('last_name', 'Last Name', 'required');
 
 		if ($this->form_validation->run()) {
-			$data = array(
-				'first_name'		=>	$this->input->post('first_name'),
-				'last_name'			=>	$this->input->post('last_name'),
-				'date_slot'			=>	$this->input->post('date_slot'),
-				'time_slot'			=>	$this->input->post('time_slot'),
-			);
-			$this->api_model->update_api($this->input->post('id'), $data);
-			$array = array(
-				'success'		=>	true
-			);
+			$availability = $this->api_model->check_availability($this->input->post('date_slot'), $this->input->post('time_slot'));
+
+			if (count($availability) <= 2) {
+				$data = array(
+					'first_name'		=>	$this->input->post('first_name'),
+					'last_name'			=>	$this->input->post('last_name'),
+					'date_slot'			=>	$this->input->post('date_slot'),
+					'time_slot'			=>	$this->input->post('time_slot'),
+				);
+				$this->api_model->update_api($this->input->post('id'), $data);
+				$array = array(
+					'success'		=>	true
+				);
+			} else {
+				$array = array(
+					'error'					=>	true,
+					'time_slot_taken'		=>	'Time slot is taken, please choose another time',
+				);
+			}
 		} else {
 			$array = array(
 				'error'				=>	true,

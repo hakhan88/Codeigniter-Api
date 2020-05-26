@@ -10,6 +10,13 @@ class Api_model extends CI_Model
 		$this->db->insert('tbl_sample', $data);
 	}
 
+	function check_availability($date_slot, $time_slot) {
+		$this->db->where('date_slot', $date_slot);
+		$this->db->where('time_slot', $time_slot);
+		$query = $this->db->get('tbl_sample');
+		return $query->result_array();
+	}
+
 	function fetch_single_user($user_id) {
 		$this->db->where('id', $user_id);
 		$query = $this->db->get('tbl_sample');
