@@ -56,7 +56,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Add User</h4>
+                    <h4 class="modal-title">Add Booking</h4>
                 </div>
                 <div class="modal-body">
                     <label>Enter First Name</label>
@@ -139,7 +139,7 @@
         // add data modal pop up
         $('#add_button').click(function() {
             $('#user_form')[0].reset();
-            $('.modal-title').text("Add User");
+            $('.modal-title').text("Add Booking");
             $('#action').val('Add');
             $('#data_action').val("Insert");
             $('#userModal').modal('show');
