@@ -187,7 +187,7 @@
                     $('#userModal').modal('show');
                     $('#first_name').val(data.first_name);
                     $('#last_name').val(data.last_name);
-                    $('.modal-title').text('Edit User');
+                    $('.modal-title').text('Edit Booking');
                     $('#user_id').val(user_id);
                     $('#action').val('Edit');
                     $('#data_action').val('Edit');

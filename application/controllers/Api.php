@@ -17,10 +17,14 @@ class Api extends CI_Controller {
 	function insert() {
 		$this->form_validation->set_rules('first_name', 'First Name', 'required');
 		$this->form_validation->set_rules('last_name', 'Last Name', 'required');
+		$this->form_validation->set_rules('date_slot', 'Date', 'required');
+		$this->form_validation->set_rules('time_slot', 'Time', 'required');
 		if ($this->form_validation->run()) {
 			$data = array(
 				'first_name'	=>	$this->input->post('first_name'),
-				'last_name'		=>	$this->input->post('last_name')
+				'last_name'		=>	$this->input->post('last_name'),
+				'date_slot'		=>	$this->input->post('date_slot'),
+				'time_slot'		=>	$this->input->post('time_slot'),
 			);
 
 			$this->api_model->insert_api($data);
@@ -43,6 +47,8 @@ class Api extends CI_Controller {
 			foreach($data as $row) {
 				$output['first_name'] = $row['first_name'];
 				$output['last_name'] = $row['last_name'];
+				$output['date_slot'] = $row['date_slot'];
+				$output['time_slot'] = $row['time_slot'];
 			}
 			echo json_encode($output);
 		}
@@ -51,7 +57,7 @@ class Api extends CI_Controller {
 	function update() {
 		$this->form_validation->set_rules('first_name', 'First Name', 'required');
 		$this->form_validation->set_rules('last_name', 'Last Name', 'required');
-		
+
 		if ($this->form_validation->run()) {
 			$data = array(
 				'first_name'		=>	$this->input->post('first_name'),
