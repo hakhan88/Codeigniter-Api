@@ -6,7 +6,7 @@
     <!-- import styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    
+
     <!-- import scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -70,7 +70,8 @@
                     <br />
 
                     <label>Please select the date:</label>
-                    <p>Date: <input type="text" id="datepicker"></p>
+                    <br />
+                    <input type="text" name="date_slot" id="datepicker">
                     <br />
 
 
@@ -96,7 +97,6 @@
                         <option value="17:00 - 17:30">17:00 - 17:30</option>
                         <option value="17:30 - 18:00">17:30 - 18:00</option>
                     </select>
-                    <br>
                     <br />
                 </div>
                 <div class="modal-footer">
@@ -113,8 +113,11 @@
 <script type="text/javascript" language="javascript">
     $(document).ready(function() {
 
-        // init datepicker
-        $("#datepicker").datepicker();
+        // init datepicker and configs for datepicker (max up to 3 weeks of selection)
+        $("#datepicker").datepicker({
+            maxDate: "+3W",
+            minDate: "0"
+        });
 
         // fetch all previously saved data on page load
         function fetch_data() {
