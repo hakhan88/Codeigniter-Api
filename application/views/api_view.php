@@ -122,7 +122,7 @@
         // fetch all previously saved data on page load
         function fetch_data() {
             $.ajax({
-                url: "<?php echo base_url(); ?>test_api/action",
+                url: "<?php echo base_url(); ?>Booking_api/action",
                 method: "POST",
                 data: {
                     data_action: 'fetch_all',
@@ -149,7 +149,7 @@
         $(document).on('submit', '#user_form', function(event) {
             event.preventDefault();
             $.ajax({
-                url: "<?php echo base_url() . 'test_api/action' ?>",
+                url: "<?php echo base_url() . 'Booking_api/action' ?>",
                 method: "POST",
                 data: $(this).serialize(),
                 dataType: "json",
@@ -176,7 +176,7 @@
         $(document).on('click', '.edit', function() {
             var user_id = $(this).attr('id');
             $.ajax({
-                url: "<?php echo base_url(); ?>test_api/action",
+                url: "<?php echo base_url(); ?>Booking_api/action",
                 method: "POST",
                 data: {
                     user_id: user_id,
@@ -200,7 +200,7 @@
             var user_id = $(this).attr('id');
             if (confirm("Are you sure you want to delete this?")) {
                 $.ajax({
-                    url: "<?php echo base_url(); ?>test_api/action",
+                    url: "<?php echo base_url(); ?>Booking_api/action",
                     method: "POST",
                     data: {
                         user_id: user_id,

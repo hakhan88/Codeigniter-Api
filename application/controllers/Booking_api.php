@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Test_api extends CI_Controller {
+class Booking_api extends CI_Controller {
 
 	function index() {
 		$this->load->view('api_view');
