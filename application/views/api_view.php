@@ -119,7 +119,10 @@
         // init datepicker and configs for datepicker (max up to 3 weeks of selection)
         $("#datepicker").datepicker({
             maxDate: "+3W",
-            minDate: "0"
+            minDate: "0",
+            beforeShowDay: function(date) {
+                return [date.getDay() != 0, ""]
+            }
         });
 
         // fetch all previously saved data on page load

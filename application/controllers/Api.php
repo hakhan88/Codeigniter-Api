@@ -14,6 +14,10 @@ class Api extends CI_Controller {
 		echo json_encode($data->result_array());
 	}
 
+	function isWeekend($date) {
+		return (date('N', strtotime($date)) >= 6);
+	}
+
 	function insert() {
 		$this->form_validation->set_rules('first_name', 'First Name', 'required');
 		$this->form_validation->set_rules('last_name', 'Last Name', 'required');
@@ -21,8 +25,9 @@ class Api extends CI_Controller {
 		$this->form_validation->set_rules('time_slot', 'Time', 'required');
 		if ($this->form_validation->run()) {
 			$availability = $this->api_model->check_availability($this->input->post('date_slot'), $this->input->post('time_slot'));
+			$numberOfBookingsPerHour = $this->isWeekend($this->input->post('date_slot')) ? 4 : 2;
 
-			if (count($availability) <= 2) {
+			if (count($availability) < $numberOfBookingsPerHour) {
 				$data = array(
 					'first_name'	=>	$this->input->post('first_name'),
 					'last_name'		=>	$this->input->post('last_name'),
@@ -71,7 +76,8 @@ class Api extends CI_Controller {
 		if ($this->form_validation->run()) {
 			$availability = $this->api_model->check_availability($this->input->post('date_slot'), $this->input->post('time_slot'));
 
-			if (count($availability) <= 2) {
+			$numberOfBookingsPerHour = $this->isWeekend($this->input->post('date_slot')) ? 4 : 2;
+			if (count($availability) < $numberOfBookingsPerHour) {
 				$data = array(
 					'first_name'		=>	$this->input->post('first_name'),
 					'last_name'			=>	$this->input->post('last_name'),
